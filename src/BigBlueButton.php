@@ -153,7 +153,13 @@ class BigBlueButton {
 		'&maxParticipants='.urlencode($creationParams['maxParticipants']).
 		'&record='.urlencode($creationParams['record']).
 		'&duration='.urlencode($creationParams['duration']);
-		//'&meta_category='.urlencode($creationParams['meta_category']);				
+
+		if(array_key_exists("autoStartRecording",$creationParams))
+        	$params .= '&autoStartRecording='.urlencode($creationParams['autoStartRecording']);
+        if(array_key_exists("allowStartStopRecording",$creationParams))
+        	$params .= '&allowStartStopRecording='.urlencode($creationParams['allowStartStopRecording']);
+
+		//'&meta_category='.urlencode($creationParams['meta_category']);
 		$welcomeMessage = $creationParams['welcomeMsg'];
 		if(trim($welcomeMessage)) 
 			$params .= '&welcome='.urlencode($welcomeMessage);
